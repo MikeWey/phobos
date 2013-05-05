@@ -285,7 +285,7 @@ $(addprefix $(ROOT)/unittest/,$(DISABLED_TESTS)) :
 
 $(ROOT)/unittest/%$(DOTEXE) : %.d $(LIB) $(ROOT)/emptymain.d
 	@echo Testing $@
-	$(QUIET)$(DMD) $(DFLAGS) -unittest $(LINKOPTS) $(subst /,$(PATHSEP),"-of$@") \
+	$(QUIET)$(DMD) $(DFLAGS) -unittest -defaultlib=:libphobos2.a $(LINKOPTS) $(subst /,$(PATHSEP),"-of$@") \
 	 	$(ROOT)/emptymain.d $<
 # make the file very old so it builds and runs again if it fails
 	@touch -t 197001230123 $@
